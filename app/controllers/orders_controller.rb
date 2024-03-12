@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show edit update destroy]
+  before_action :set_order, only: %i[show edit update destroy mark_order_as_paid]
 
   # GET /orders or /orders.json
   def index
@@ -33,6 +33,16 @@ class OrdersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def ready_for_pickup
+    @orders = Order.ready_for_pickup
+  end
+
+  def mark_order_as_paid
+    @order.paid!
+
+    redirect_to ready_for_pickup_path
   end
 
   # PATCH/PUT /orders/1 or /orders/1.json
