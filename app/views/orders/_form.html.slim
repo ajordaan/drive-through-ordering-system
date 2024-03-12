@@ -9,10 +9,10 @@
   div
     = form.label :vehicle_registration_number, style: "display: block"
     = form.text_field :vehicle_registration_number
-
   div
-    = form.label :status, style: "display: block"
-    = form.number_field :status
+    - MenuItem.all.each do |menu_item|
+      = label_tag "menu_item_ids_#{menu_item.id}", menu_item.name
+      = check_box_tag "menu_item_ids[]", menu_item.id, false, id: "menu_item_ids_#{menu_item.id}"
 
   div
     = form.submit
