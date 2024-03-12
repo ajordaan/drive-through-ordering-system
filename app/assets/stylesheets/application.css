@@ -26,6 +26,10 @@ body {
   gap: 1rem;
 }
 
+.flex-items-baseline {
+  align-items: baseline;
+}
+
 .card {
   padding: 2rem;
   background-color: #ffffff;
@@ -36,3 +40,23 @@ body {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   align-self: flex-start;
 }
+
+.flash
+  text-align: center
+  padding: 1rem
+  margin-bottom: 1rem
+  font-size: 0.875rem
+  line-height: 1.25rem
+  border-radius: 0.5rem
+
+  &-container
+    display: flex
+    justify-content: center
+
+  &--alert
+    background-color: #FEE2E2
+    color: #B91C1C
+
+  &--notice
+    background-color: #D1FAE5
+    color: #047857

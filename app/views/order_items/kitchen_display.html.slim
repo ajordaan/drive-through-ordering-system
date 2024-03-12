@@ -1,8 +1,9 @@
 h1 Kitchen Display
 
 - @order_items.each do |order_item|
-  p = order_item.menu_item.name
-  = button_to "Finished Preparation", mark_item_as_prepared_path(id: order_item.id)
+  .flex.flex-gap
+    p = order_item.menu_item.name
+    = button_to "Finished Preparation", mark_item_as_prepared_path(id: order_item.id), class: 'button-primary'
 - if @order_items.empty?
   p No pending orders
 
