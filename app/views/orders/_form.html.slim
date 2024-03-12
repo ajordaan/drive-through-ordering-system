@@ -11,7 +11,7 @@
     = form.text_field :vehicle_registration_number
   div
     - MenuItem.all.each do |menu_item|
-      = label_tag "menu_item_ids_#{menu_item.id}", menu_item.name
+      = label_tag "menu_item_ids_#{menu_item.id}", "#{menu_item.name} (£#{menu_item.price})"
       = check_box_tag "menu_item_ids[]", menu_item.id, false, id: "menu_item_ids_#{menu_item.id}"
 
   div
