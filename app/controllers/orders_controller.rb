@@ -14,10 +14,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-
-    MenuItem.all.each do |menu_item|
-      @order.order_items.build(menu_item: menu_item, status: :pending)
-    end
   end
 
   # GET /orders/1/edit
