@@ -22,16 +22,22 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-    @order.pending!
 
-    params[:menu_item_ids].each do |menu_item|
+    if menu_item_ids_params.blank?
+      @order.errors.add(:base, 'At least one menu item must be selected')
+      render :new, status: :unprocessable_entity and return
+    end
+
+    menu_item_ids_params.each do |menu_item|
       @order.order_items.build(menu_item_id: menu_item)
     end
 
-    if @order.save
-      redirect_to order_url(@order), notice: 'Order was successfully created.'
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -73,6 +79,10 @@ class OrdersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def menu_item_ids_params
+    params[:menu_item_ids] || []
   end
 
   def order_params
