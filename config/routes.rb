@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "home#index"
+
   resources :order_items
   resources :menu_items
   resources :orders
