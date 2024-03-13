@@ -43,8 +43,9 @@ These instructions will get you a copy of the project up and running on your loc
         ```
 
         This will create the databases, load the schema, and initialize with the seed data.
+### Running the Application
 
-6. **Start the Rails server**
+1. **Start the Rails server**
 
     You can start the rails server using the command given below.
 
@@ -52,7 +53,7 @@ These instructions will get you a copy of the project up and running on your loc
     bin/rails s
     ```
 
-7. **Serve assets with esbuild**
+2. **Serve assets with esbuild**
 
     ```
     yarn build --watch
