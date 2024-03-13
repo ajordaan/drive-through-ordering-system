@@ -16,7 +16,7 @@ h1 Orders ready for Pickup
         - order.menu_items.each do |menu_item|
           li = menu_item.name
 
-      = button_to "Mark as Paid", mark_order_as_paid_path(id: order.id), class:"button-primary"
+      = button_to "Mark as Paid", mark_as_paid_order_path(order), class:"button-primary"
 
   - if @orders.empty?
     p No orders ready for pickup
