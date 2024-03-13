@@ -41,22 +41,23 @@ body {
   align-self: flex-start;
 }
 
-.flash
-  text-align: center
-  padding: 1rem
-  margin-bottom: 1rem
-  font-size: 0.875rem
-  line-height: 1.25rem
-  border-radius: 0.5rem
-
-  &-container
-    display: flex
-    justify-content: center
-
-  &--alert
-    background-color: #FEE2E2
-    color: #B91C1C
-
-  &--notice
-    background-color: #D1FAE5
-    color: #047857
+.flash {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  line-height: 1.25rem;
+  border-radius: 0.5rem;
+}
+.flash-container {
+  display: flex;
+  justify-content: center;
+}
+.flash--alert {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+}
+.flash--notice {
+  background-color: #D1FAE5;
+  color: #047857;
+}
