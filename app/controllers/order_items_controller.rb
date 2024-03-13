@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: %i[ show edit update destroy mark_as_prepared ]
+  before_action :set_order_item, only: %i[show edit update destroy mark_as_prepared]
 
   # GET /order_items or /order_items.json
   def index
@@ -7,8 +9,7 @@ class OrderItemsController < ApplicationController
   end
 
   # GET /order_items/1 or /order_items/1.json
-  def show
-  end
+  def show; end
 
   # GET /order_items/new
   def new
@@ -16,8 +17,7 @@ class OrderItemsController < ApplicationController
   end
 
   # GET /order_items/1/edit
-  def edit
-  end
+  def edit; end
 
   def kitchen_display
     @order_items = OrderItem.pending_order_items.includes([:menu_item])
@@ -26,7 +26,7 @@ class OrderItemsController < ApplicationController
   def mark_as_prepared
     @order_item.prepared!
 
-    redirect_to kitchen_display_order_items_path, notice: "Order item was marked as prepared"
+    redirect_to kitchen_display_order_items_path, notice: 'Order item was marked as prepared'
   end
 
   # POST /order_items or /order_items.json
@@ -35,7 +35,7 @@ class OrderItemsController < ApplicationController
 
     respond_to do |format|
       if @order_item.save
-        format.html { redirect_to order_item_url(@order_item), notice: "Order item was successfully created." }
+        format.html { redirect_to order_item_url(@order_item), notice: 'Order item was successfully created.' }
         format.json { render :show, status: :created, location: @order_item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class OrderItemsController < ApplicationController
   def update
     respond_to do |format|
       if @order_item.update(order_item_params)
-        format.html { redirect_to order_item_url(@order_item), notice: "Order item was successfully updated." }
+        format.html { redirect_to order_item_url(@order_item), notice: 'Order item was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_item }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,19 +62,20 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to order_items_url, notice: "Order item was successfully destroyed." }
+      format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order_item
-      @order_item = OrderItem.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def order_item_params
-      params.require(:order_item).permit(:order_id, :menu_item_id, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order_item
+    @order_item = OrderItem.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def order_item_params
+    params.require(:order_item).permit(:order_id, :menu_item_id, :status)
+  end
 end
