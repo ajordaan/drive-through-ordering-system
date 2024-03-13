@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: %i[ show edit update destroy mark_item_as_prepared ]
+  before_action :set_order_item, only: %i[ show edit update destroy mark_as_prepared ]
 
   # GET /order_items or /order_items.json
   def index
@@ -23,10 +23,10 @@ class OrderItemsController < ApplicationController
     @order_items = OrderItem.pending_order_items
   end
 
-  def mark_item_as_prepared
+  def mark_as_prepared
     @order_item.prepared!
 
-    redirect_to kitchen_display_path, notice: "Order item was marked as prepared"
+    redirect_to kitchen_display_order_items_path, notice: "Order item was marked as prepared"
   end
 
   # POST /order_items or /order_items.json

@@ -3,7 +3,7 @@ h1 Kitchen Display
 - @order_items.each do |order_item|
   .flex.flex-gap
     p = order_item.menu_item.name
-    = button_to "Finished Preparation", mark_item_as_prepared_path(id: order_item.id), class: 'button-primary'
+    = button_to "Finished Preparation", mark_as_prepared_order_item_path(order_item), class: 'button-primary'
 - if @order_items.empty?
   p No pending orders
 
