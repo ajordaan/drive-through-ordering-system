@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   end
 
   def ready_for_pickup
-    @orders = Order.ready_for_pickup
+    @orders = Order.ready_for_pickup.includes([:menu_items])
   end
 
   def mark_as_paid

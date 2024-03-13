@@ -20,7 +20,7 @@ class OrderItemsController < ApplicationController
   end
 
   def kitchen_display
-    @order_items = OrderItem.pending_order_items
+    @order_items = OrderItem.pending_order_items.includes([:menu_item])
   end
 
   def mark_as_prepared
